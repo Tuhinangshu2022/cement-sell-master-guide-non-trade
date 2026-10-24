@@ -1,0 +1,1195 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cement Sales Playbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a site-office binder. Concrete grey ground, hazard-tape rules, big condensed headings, one safety-yellow accent used for the memory hooks. */
+:root {
+  --bg: #E9E8E4;
+  --surface: #F5F4F1;
+  --ink: #1B1F22;
+  --muted: #565D62;
+  --line: #CBC9C2;
+  --line-strong: #1B1F22;
+  --accent: #F2B705;
+  --on-accent: #1B1F22;
+  --accent-text: #7A5800;
+  --good: #1E7A4C;
+  --bad: #B3261E;
+  --tape-dark: #1B1F22;
+  --font-display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14171A;
+    --surface: #1C2024;
+    --ink: #ECEAE4;
+    --muted: #A2A8AC;
+    --line: #333A40;
+    --line-strong: #ECEAE4;
+    --accent: #F2B705;
+    --on-accent: #14171A;
+    --accent-text: #F2B705;
+    --good: #4CC38A;
+    --bad: #FF7B72;
+    --tape-dark: #0A0C0D;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14171A;
+  --surface: #1C2024;
+  --ink: #ECEAE4;
+  --muted: #A2A8AC;
+  --line: #333A40;
+  --line-strong: #ECEAE4;
+  --accent: #F2B705;
+  --on-accent: #14171A;
+  --accent-text: #F2B705;
+  --good: #4CC38A;
+  --bad: #FF7B72;
+  --tape-dark: #0A0C0D;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 30;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+.wrap { max-width: 980px; margin-inline: auto; }
+h1, h2, h3, h4, p, ul, dl, dd, figure { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 2px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.tabnum { font-variant-numeric: tabular-nums; }
+
+/* Hazard tape */
+.tape {
+  height: 14px;
+  background: repeating-linear-gradient(-45deg, var(--accent) 0 14px, var(--tape-dark) 14px 28px);
+}
+
+/* Hero */
+.hero { padding-block: 28px 44px; display: grid; gap: 22px; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(54px, 13.5vw, 128px);
+  line-height: 0.9;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.hero-lead { font-size: 19px; max-width: 58ch; color: var(--muted); }
+.hero-lead strong { color: var(--ink); font-weight: 600; }
+
+.strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 6px; }
+@media (min-width: 760px) { .strip { grid-template-columns: repeat(6, 1fr); } }
+.strip-item { border: 2px solid var(--line-strong); background: var(--surface); display: flex; flex-direction: column; min-width: 0; }
+.strip-letter {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 1;
+  padding: 6px 10px 2px;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.strip-word { font-size: 13px; line-height: 1.3; font-weight: 500; padding: 8px 10px 10px; }
+
+/* Nav */
+.nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--bg);
+  border-block: 2px solid var(--line-strong);
+}
+.nav-inner { display: flex; gap: 2px; overflow-x: auto; max-width: 980px; margin-inline: auto; scrollbar-width: thin; }
+.nav a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 13px 12px;
+}
+.nav a:hover { background: var(--accent); color: var(--on-accent); }
+
+/* Sections */
+.sec {
+  padding-block: clamp(46px, 9vw, 88px);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 46px);
+}
+.nav + .sec { border-top: 0; }
+.sec-head { display: grid; gap: 12px; margin-bottom: 30px; max-width: 70ch; }
+.kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-text); }
+h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(38px, 8vw, 66px);
+  line-height: 0.95;
+  text-wrap: balance;
+}
+h3 { font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.05; text-transform: uppercase; }
+h4 { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.lead { font-size: 18px; color: var(--muted); }
+
+.tick { display: grid; gap: 10px; }
+.tick li { position: relative; padding-left: 24px; }
+.tick li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 11px;
+  height: 11px;
+  background: var(--accent);
+  border: 1.5px solid var(--line-strong);
+}
+
+.say, .watch { padding: 12px 14px; font-weight: 500; display: block; }
+.say { background: var(--surface); border: 1.5px solid var(--line-strong); }
+.watch { border: 1.5px solid var(--bad); color: var(--ink); }
+.say span, .watch span {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  margin-right: 10px;
+  vertical-align: 1px;
+}
+.say span { background: var(--accent); color: var(--on-accent); }
+.watch span { border: 1.5px solid var(--bad); color: var(--bad); }
+
+/* Idea */
+.pull {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(34px, 7vw, 60px);
+  line-height: 0.98;
+  max-width: 18ch;
+  margin-bottom: 30px;
+  text-wrap: balance;
+}
+.pull mark { background: var(--accent); color: var(--on-accent); padding-inline: 0.12em; }
+.compare { display: grid; gap: 14px; grid-template-columns: 1fr; margin-bottom: 30px; }
+@media (min-width: 720px) { .compare { grid-template-columns: 1fr 1fr; } }
+.box { border: 2px solid var(--line-strong); padding: 18px; background: var(--surface); display: grid; gap: 12px; min-width: 0; }
+.box.hot { border-top: 10px solid var(--accent); }
+.box ul { display: grid; gap: 6px; }
+.box li { padding-left: 0; }
+
+/* Calculator */
+.calc { border: 2px solid var(--line-strong); background: var(--surface); }
+.calc-inputs { display: grid; gap: 14px; padding: 18px; grid-template-columns: 1fr; border-bottom: 2px solid var(--line-strong); }
+@media (min-width: 640px) { .calc-inputs { grid-template-columns: 1fr 1fr; } }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-size: 14px; font-weight: 600; }
+.field .hint { font-size: 13px; color: var(--muted); }
+.input-row { display: flex; align-items: stretch; border: 2px solid var(--line-strong); background: var(--bg); }
+.input-row .unit { font-family: var(--font-mono); font-size: 13px; padding: 0 10px; display: flex; align-items: center; background: var(--accent); color: var(--on-accent); }
+.input-row input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-family: var(--font-mono); font-size: 18px; padding: 10px 12px; }
+.calc-out { padding: 18px; display: grid; gap: 20px; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stat { border: 1.5px solid var(--line-strong); padding: 12px 14px; min-width: 0; }
+.stat .v { font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 7vw, 44px); line-height: 1; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.stat .l { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.bars { display: grid; gap: 14px; }
+.bar { display: grid; gap: 4px; }
+.bar-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px; font-weight: 600; }
+.bar-top .val { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.bar-track { height: 22px; background: var(--bg); border: 1.5px solid var(--line-strong); }
+.bar-fill { height: 100%; width: 0; transition: width 0.35s ease; }
+.bar-fill.prem { background: var(--ink); }
+.bar-fill.save { background: var(--accent); }
+.verdict { font-weight: 500; padding: 14px; border: 2px solid var(--line-strong); background: var(--bg); }
+.note { font-size: 14px; color: var(--muted); }
+
+/* CEMENT cards */
+.cm-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); }
+.cm { border: 2px solid var(--line-strong); background: var(--surface); display: grid; gap: 16px; padding: 18px; align-content: start; min-width: 0; }
+.cm-head { display: flex; gap: 14px; align-items: center; }
+.cm-letter {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 68px;
+  line-height: 1;
+  width: 64px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 2px solid var(--line-strong);
+  flex: none;
+}
+.cm-head p { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* Terms */
+.terms { display: grid; gap: 0; grid-template-columns: 1fr; border-top: 2px solid var(--line-strong); }
+@media (min-width: 760px) { .terms { grid-template-columns: 1fr 1fr; column-gap: 32px; } }
+.term { padding: 14px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.term dt { font-family: var(--font-display); font-weight: 700; font-size: 24px; text-transform: uppercase; line-height: 1.05; }
+.term dd { color: var(--muted); margin-top: 4px; }
+
+/* Questions + people */
+.qgrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); }
+.qbox { border-top: 6px solid var(--accent); background: var(--surface); padding: 16px; display: grid; gap: 12px; align-content: start; min-width: 0; border-inline: 1.5px solid var(--line-strong); border-bottom: 1.5px solid var(--line-strong); }
+.qbox ul { display: grid; gap: 10px; }
+.who { border: 2px solid var(--line-strong); background: var(--surface); padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.who .row { display: grid; gap: 2px; }
+
+/* Cases */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; align-items: center; }
+.chipbtn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1.5px solid var(--line-strong);
+  padding: 8px 12px;
+}
+.chipbtn[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.chipbtn.plain { border-style: dashed; margin-left: auto; }
+.case { border: 2px solid var(--line-strong); background: var(--surface); margin-bottom: 10px; }
+.case summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.case summary::-webkit-details-marker { display: none; }
+.case summary::after { content: "+"; font-family: var(--font-mono); font-size: 26px; line-height: 1; margin-left: auto; flex: none; transition: transform 0.2s; }
+.case[open] summary::after { transform: rotate(45deg); }
+.case[open] summary { background: var(--accent); color: var(--on-accent); border-bottom: 2px solid var(--line-strong); }
+.case .tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1.5px solid currentColor;
+  padding: 2px 7px;
+  flex: none;
+}
+.case-title { font-weight: 600; min-width: 0; }
+.case-body { padding: 18px 16px 20px; display: grid; gap: 18px; }
+.case-body section { display: grid; gap: 8px; }
+
+/* Replies */
+.reps { border-top: 2px solid var(--line-strong); }
+.rep { display: grid; gap: 8px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 760px) { .rep { grid-template-columns: 1fr 1.4fr; gap: 28px; } }
+.rep .obj { font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 1.05; text-transform: uppercase; }
+.rep .ans { min-width: 0; }
+
+/* Rules */
+.duo { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .duo { grid-template-columns: 1fr 1fr; } }
+.rule { border: 2px solid var(--line-strong); background: var(--surface); padding: 18px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.rule h3 { display: flex; align-items: center; gap: 10px; }
+.rule.do h3 { color: var(--good); }
+.rule.dont h3 { color: var(--bad); }
+.rule ul { display: grid; gap: 10px; }
+.rule li { position: relative; padding-left: 22px; }
+.rule li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 11px; height: 11px; border: 2px solid currentColor; }
+.rule.do li::before { color: var(--good); background: var(--good); }
+.rule.dont li::before { color: var(--bad); }
+
+/* Trial checklist */
+.check { border: 2px solid var(--line-strong); background: var(--surface); }
+.check-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 2px solid var(--line-strong); flex-wrap: wrap; }
+.check-top strong { font-family: var(--font-mono); font-weight: 500; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+.prog { height: 12px; flex: 1; min-width: 120px; background: var(--bg); border: 1.5px solid var(--line-strong); }
+.prog i { display: block; height: 100%; width: 0; background: var(--accent); transition: width 0.25s; }
+.check ul { display: grid; }
+.check li { border-bottom: 1px solid var(--line); }
+.check li:last-child { border-bottom: 0; }
+.check label { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; cursor: pointer; }
+.check input { width: 22px; height: 22px; accent-color: var(--accent); margin: 2px 0 0; flex: none; }
+.check input:checked + span { color: var(--muted); text-decoration: line-through; }
+
+/* Plan */
+.weeks { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); margin-bottom: 24px; }
+.week { border: 2px solid var(--line-strong); background: var(--surface); padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.week .wk { font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 0.9; color: var(--accent-text); }
+.week ul { display: grid; gap: 8px; font-size: 15px; }
+
+/* Flashcards */
+.fc { display: grid; gap: 14px; max-width: 720px; }
+.fc-card {
+  width: 100%;
+  min-height: 250px;
+  text-align: left;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+  align-content: space-between;
+}
+.fc-card.back { background: var(--accent); color: var(--on-accent); }
+.fc-side { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
+.fc-text { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 6vw, 42px); line-height: 1.05; }
+.fc-text.small { font-family: var(--font-body); font-weight: 500; font-size: clamp(19px, 4.2vw, 24px); line-height: 1.4; }
+.fc-tap { font-size: 13px; opacity: 0.75; }
+.fc-ctl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.fc-ctl .count { font-family: var(--font-mono); font-size: 13px; margin-left: auto; }
+.btn { background: var(--ink); color: var(--bg); border: 2px solid var(--line-strong); padding: 10px 16px; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+.btn.ghost { background: transparent; color: var(--ink); }
+
+/* Pocket */
+.pocket { border: 2px solid var(--line-strong); background: var(--ink); color: var(--bg); padding: clamp(18px, 4vw, 34px); display: grid; gap: 20px; }
+.pocket h3 { color: var(--accent); font-size: clamp(30px, 6vw, 44px); }
+.pocket ul { display: grid; gap: 12px; font-size: 19px; font-weight: 500; }
+.pocket li { position: relative; padding-left: 28px; }
+.pocket li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 13px; height: 13px; background: var(--accent); }
+
+.foot { padding-block: 34px 56px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); display: grid; gap: 14px; }
+</style>
+
+<header class="wrap hero">
+  <p class="eyebrow">Area sales manager / non-trade accounts</p>
+  <h1>Win the site, not the price war.</h1>
+  <p class="hero-lead">A study guide for selling cement to big projects that already buy from a cheaper supplier. <strong>Learn the six-letter plan, practise the real situations, then test yourself with the flashcards.</strong></p>
+  <div class="strip" aria-label="The CEMENT plan at a glance">
+    <div class="strip-item"><span class="strip-letter">C</span><span class="strip-word">Cost of delay</span></div>
+    <div class="strip-item"><span class="strip-letter">E</span><span class="strip-word">Every decision maker</span></div>
+    <div class="strip-item"><span class="strip-letter">M</span><span class="strip-word">Mini trial pour</span></div>
+    <div class="strip-item"><span class="strip-letter">E</span><span class="strip-word">Even split of supply</span></div>
+    <div class="strip-item"><span class="strip-letter">N</span><span class="strip-word">No blind discount</span></div>
+    <div class="strip-item"><span class="strip-letter">T</span><span class="strip-word">Technical backup and track record</span></div>
+  </div>
+</header>
+<div class="tape" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Sections">
+  <div class="nav-inner">
+    <a href="#idea">Idea</a>
+    <a href="#maths">Maths</a>
+    <a href="#cement">CEMENT</a>
+    <a href="#terms">Terms</a>
+    <a href="#questions">Questions</a>
+    <a href="#people">People</a>
+    <a href="#cases">Cases</a>
+    <a href="#replies">Replies</a>
+    <a href="#rules">Rules</a>
+    <a href="#trial">Trial</a>
+    <a href="#plan">Plan</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#pocket">Pocket</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section class="sec" id="idea">
+  <div class="sec-head">
+    <p class="kicker">The one idea</p>
+    <h2>Stop being cheaper or costlier. Be the supplier who keeps the site moving.</h2>
+  </div>
+  <p class="pull">Do not sell a bag. Sell a <mark>pour that finishes on time.</mark></p>
+  <div class="compare">
+    <div class="box">
+      <h4>What the buyer compares today</h4>
+      <ul class="tick">
+        <li>Rate per bag</li>
+        <li>Total on the quotation</li>
+        <li>Credit days on offer</li>
+      </ul>
+    </div>
+    <div class="box hot">
+      <h4>What you make them compare</h4>
+      <ul class="tick">
+        <li>Cost of late loads and idle labour</li>
+        <li>Rework from batch variation</li>
+        <li>Time taken to fix a problem</li>
+        <li>Paperwork for quality audits</li>
+        <li>Hours spent chasing the supplier</li>
+      </ul>
+    </div>
+  </div>
+  <ul class="tick">
+    <li>Price is visible on paper. Delays, rework and chasing are hidden. Your job is to make the hidden costs visible.</li>
+    <li>People pay a little more for certainty, but only after you have proved it.</li>
+    <li>You earn a higher price in stages: trial first, then second supplier, then main supplier.</li>
+    <li>Never attack the rival. Ask questions and let the customer say where the pain is.</li>
+  </ul>
+</section>
+
+<section class="sec" id="maths">
+  <div class="sec-head">
+    <p class="kicker">Break-even test</p>
+    <h2>How many idle days does your higher rate need to pay back?</h2>
+    <p class="lead">Change the numbers. The figures below are examples. In a real meeting, ask the site team for their own cost of a stopped day. A number they say themselves convinces better than a number you bring.</p>
+  </div>
+  <div class="calc">
+    <div class="calc-inputs">
+      <div class="field">
+        <label for="in-vol">Monthly cement volume</label>
+        <div class="input-row"><input id="in-vol" type="number" inputmode="decimal" min="0" value="2000"><span class="unit">tonnes</span></div>
+        <span class="hint">Counted at 20 bags of 50 kg to the tonne.</span>
+      </div>
+      <div class="field">
+        <label for="in-gap">Your price premium per bag</label>
+        <div class="input-row"><input id="in-gap" type="number" inputmode="decimal" min="0" value="8"><span class="unit">₹ / bag</span></div>
+        <span class="hint">How much dearer you are than the current supplier.</span>
+      </div>
+      <div class="field">
+        <label for="in-cost">Cost of one idle site day</label>
+        <div class="input-row"><input id="in-cost" type="number" inputmode="decimal" min="0" value="90000"><span class="unit">₹ / day</span></div>
+        <span class="hint">Labour gang, hired machines, transit mixers, schedule penalty.</span>
+      </div>
+      <div class="field">
+        <label for="in-days">Idle days your supply avoids each month</label>
+        <div class="input-row"><input id="in-days" type="number" inputmode="decimal" min="0" value="4"><span class="unit">days</span></div>
+        <span class="hint">Late loads and stopped pours you would not cause.</span>
+      </div>
+    </div>
+    <div class="calc-out">
+      <div class="stats">
+        <div class="stat"><div class="v" id="out-tonne">-</div><div class="l">Your premium</div></div>
+        <div class="stat"><div class="v" id="out-be">-</div><div class="l">Break-even idle days per month</div></div>
+      </div>
+      <div class="bars">
+        <div class="bar">
+          <div class="bar-top"><span>Extra the customer pays you each month</span><span class="val" id="out-prem">-</span></div>
+          <div class="bar-track"><div class="bar-fill prem" id="bar-prem"></div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-top"><span>Value of delays you avoid each month</span><span class="val" id="out-save">-</span></div>
+          <div class="bar-track"><div class="bar-fill save" id="bar-save"></div></div>
+        </div>
+      </div>
+      <p class="verdict" id="verdict" aria-live="polite"></p>
+      <p class="note">Formula to remember: monthly premium = bags per month × gap per bag. Break-even days = monthly premium ÷ cost of one idle day.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="cement">
+  <div class="sec-head">
+    <p class="kicker">The memory hook</p>
+    <h2>C.E.M.E.N.T. The six moves that win an account</h2>
+    <p class="lead">Say the word to yourself before every customer call. Each letter is one move. You do not need all six in the first meeting, but you should know which one you are using.</p>
+  </div>
+  <div class="cm-grid">
+    <article class="cm">
+      <div class="cm-head"><span class="cm-letter">C</span><div><p>Find the hidden cost</p><h3>Cost of delay</h3></div></div>
+      <ul class="tick">
+        <li>Ask what one late truck or one stopped pour costs in labour, machines and schedule.</li>
+        <li>Look for faults in the current supply: late loads, batch variation, slow complaint handling.</li>
+        <li>Let them say the problem. Do not run down the rival.</li>
+        <li>Turn their answer into rupees, then compare it with your price gap.</li>
+      </ul>
+      <p class="say"><span>Say it</span>&ldquo;What did the last delayed pour cost you?&rdquo;</p>
+    </article>
+    <article class="cm">
+      <div class="cm-head"><span class="cm-letter">E</span><div><p>Reach everyone who feels the cement</p><h3>Every decision maker</h3></div></div>
+      <ul class="tick">
+        <li>Procurement buys on price. Site engineer, project manager and quality head live with the result.</li>
+        <li>Meet all of them in the first month. You need allies who feel the pain of bad supply.</li>
+        <li>On big accounts, reach the owner or director at the right moment.</li>
+        <li>Keep procurement informed. Never go around them rudely.</li>
+      </ul>
+      <p class="say"><span>Say it</span>&ldquo;Who else is affected if a load does not turn up?&rdquo;</p>
+    </article>
+    <article class="cm">
+      <div class="cm-head"><span class="cm-letter">M</span><div><p>Make the yes small</p><h3>Mini trial pour</h3></div></div>
+      <ul class="tick">
+        <li>Ask for one pour, one slab or one week. Small and low risk is easy to approve.</li>
+        <li>Prepare it like an exam: stock reserved, truck timing confirmed, test certificate ready, you on site.</li>
+        <li>Agree the pass marks before you start, in writing.</li>
+        <li>Afterwards send a one-page summary: on-time loads, batch reports, any issue and the fix.</li>
+      </ul>
+      <p class="say"><span>Say it</span>&ldquo;Give us one pour. If we miss, you lost nothing.&rdquo;</p>
+    </article>
+    <article class="cm">
+      <div class="cm-head"><span class="cm-letter">E</span><div><p>Be the backup first</p><h3>Even split of supply</h3></div></div>
+      <ul class="tick">
+        <li>Do not ask them to drop the current supplier. Ask to be second source for 20 to 30 percent of volume.</li>
+        <li>A backup lowers their risk, so it is easy to approve.</li>
+        <li>Perform, then ask for 40 percent, then 50, then main supplier at the review.</li>
+        <li>Track your share of their total cement purchase like a score.</li>
+      </ul>
+      <p class="say"><span>Say it</span>&ldquo;I am not asking you to drop anyone. I want to be your backup.&rdquo;</p>
+    </article>
+    <article class="cm">
+      <div class="cm-head"><span class="cm-letter">N</span><div><p>Trade, never give</p><h3>No blind discount</h3></div></div>
+      <ul class="tick">
+        <li>A price cut teaches them to ask again, lowers your margin for good and is hard to reverse.</li>
+        <li>Trade value for commitment: quarterly volume rebate, better credit days, priority supply in peak season.</li>
+        <li>Every give needs a get. Ask what they can commit to in return.</li>
+        <li>If you must flex on rate, flex on volume tiers, not the base rate.</li>
+      </ul>
+      <p class="say"><span>Say it</span>&ldquo;I cannot cut the rate. I can pay a rebate on every tonne above your commitment.&rdquo;</p>
+    </article>
+    <article class="cm">
+      <div class="cm-head"><span class="cm-letter">T</span><div><p>Prove it with paper and people</p><h3>Technical backup and track record</h3></div></div>
+      <ul class="tick">
+        <li>Offer mix design help, on-site testing support and batch test certificates.</li>
+        <li>Give one named person who picks up at 6 AM (you), plus a dispatch contact.</li>
+        <li>Keep records: loads delivered on time, complaints closed, time taken to solve.</li>
+        <li>Bring references from sites like theirs. Proof beats promises.</li>
+      </ul>
+      <p class="say"><span>Say it</span>&ldquo;Here is our delivery record at three similar sites.&rdquo;</p>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="terms">
+  <div class="sec-head">
+    <p class="kicker">Key concepts</p>
+    <h2>Words you should be able to explain in one breath</h2>
+  </div>
+  <dl class="terms">
+    <div class="term"><dt>Non-trade</dt><dd>Direct sales to large consumers such as developers, infrastructure projects, ready-mix plants and big contractors. Trade means sales through dealers and retailers.</dd></div>
+    <div class="term"><dt>Total cost of ownership</dt><dd>Price per bag plus delays, rework, wastage, chasing and the cost of money tied up in credit. The real cost of buying cement.</dd></div>
+    <div class="term"><dt>Value selling</dt><dd>Selling the outcome (pours that finish on time, fewer problems) before the product itself.</dd></div>
+    <div class="term"><dt>Second source</dt><dd>A backup supplier the buyer keeps to reduce risk. Your easiest way in through a locked door.</dd></div>
+    <div class="term"><dt>Trial order</dt><dd>A small, defined test with pass marks agreed in advance, so the result is a fact and not an opinion.</dd></div>
+    <div class="term"><dt>Volume rebate</dt><dd>Money paid back when the buyer crosses an agreed volume in a period. It protects your base rate.</dd></div>
+    <div class="term"><dt>Credit days</dt><dd>Time the customer takes to pay. Longer credit is a hidden price cut, because your money is stuck with them.</dd></div>
+    <div class="term"><dt>Switching cost</dt><dd>The effort and blame a buyer takes on when changing supplier. Reduce it with trials, support and clear records.</dd></div>
+    <div class="term"><dt>Share of wallet</dt><dd>Your percentage of the customer's total cement purchase. Grow it step by step.</dd></div>
+    <div class="term"><dt>Decision map</dt><dd>Who uses the cement, who influences, who approves, who pays. Draw it for every big account.</dd></div>
+    <div class="term"><dt>Batch test certificate</dt><dd>Paper proof of quality for each batch. Quality teams love it, and it ends many arguments.</dd></div>
+    <div class="term"><dt>Strength and setting time</dt><dd>The two quality numbers site engineers watch most: 28-day strength and how fast the mix sets.</dd></div>
+  </dl>
+</section>
+
+<section class="sec" id="questions">
+  <div class="sec-head">
+    <p class="kicker">First-meeting question list</p>
+    <h2>Ask before you pitch</h2>
+    <p class="lead">Good questions do your selling. The customer hears their own problems out loud, and you collect the numbers you need for the break-even test.</p>
+  </div>
+  <div class="qgrid">
+    <div class="qbox"><h4>Supply</h4><ul class="tick">
+      <li>How many loads arrive in a week, and how often is one late?</li>
+      <li>What happens on site when a load is late?</li>
+      <li>Do you keep buffer stock? What does that cost you?</li>
+    </ul></div>
+    <div class="qbox"><h4>Quality</h4><ul class="tick">
+      <li>Any problems with strength, setting time or lumps in the last six months?</li>
+      <li>How do you test batches today?</li>
+      <li>What would your quality head like to see more of?</li>
+    </ul></div>
+    <div class="qbox"><h4>Support</h4><ul class="tick">
+      <li>When something goes wrong, who do you call?</li>
+      <li>How long does it take to get a real answer?</li>
+      <li>Does the supplier ever visit the site?</li>
+    </ul></div>
+    <div class="qbox"><h4>Money</h4><ul class="tick">
+      <li>What payment terms do you have now?</li>
+      <li>Would better terms matter more to you than the rate?</li>
+      <li>What is a stopped day worth to you?</li>
+    </ul></div>
+    <div class="qbox"><h4>Future</h4><ul class="tick">
+      <li>What is the next phase of this project, and its monthly need?</li>
+      <li>What would make you add a second supplier?</li>
+      <li>When does your current arrangement come up for review?</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="people">
+  <div class="sec-head">
+    <p class="kicker">Decision map</p>
+    <h2>Six people, six different worries</h2>
+    <p class="lead">Procurement may say no while the site engineer is begging for a better supplier. Know what each person cares about and speak to that.</p>
+  </div>
+  <div class="qgrid">
+    <div class="who"><h3>Purchase head</h3>
+      <div class="row"><h4>Cares about</h4><p>Rate, terms, paperwork, staying within budget.</p></div>
+      <div class="row"><h4>Win them with</h4><p>A clear rate card, rebate structure, credit terms and fast documents.</p></div></div>
+    <div class="who"><h3>Site engineer</h3>
+      <div class="row"><h4>Cares about</h4><p>Loads on time, steady quality, no excuses.</p></div>
+      <div class="row"><h4>Win them with</h4><p>Agreed delivery slots, your mobile number, quick fixes on the day.</p></div></div>
+    <div class="who"><h3>Project manager</h3>
+      <div class="row"><h4>Cares about</h4><p>Schedule, no stoppages, no surprises for the client.</p></div>
+      <div class="row"><h4>Win them with</h4><p>Priority supply and a clear escalation path when things go wrong.</p></div></div>
+    <div class="who"><h3>Quality head</h3>
+      <div class="row"><h4>Cares about</h4><p>Strength, test records, audit trail.</p></div>
+      <div class="row"><h4>Win them with</h4><p>Batch certificates, lab support and open data.</p></div></div>
+    <div class="who"><h3>Accounts</h3>
+      <div class="row"><h4>Cares about</h4><p>Correct invoices, clean reconciliation, payment cycle.</p></div>
+      <div class="row"><h4>Win them with</h4><p>Error-free billing and a quick reply on every query.</p></div></div>
+    <div class="who"><h3>Owner or director</h3>
+      <div class="row"><h4>Cares about</h4><p>Risk, total spend, trust in the people they deal with.</p></div>
+      <div class="row"><h4>Win them with</h4><p>Proof, references and one well-timed meeting.</p></div></div>
+  </div>
+</section>
+
+<section class="sec" id="cases">
+  <div class="sec-head">
+    <p class="kicker">Practical situations</p>
+    <h2>Fifteen real moments from the field</h2>
+    <p class="lead">Tap a situation to see what is going on, what to do, and the line to say. Filter by type to practise one skill at a time.</p>
+  </div>
+  <div class="filters" id="filters">
+    <button class="chipbtn" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button class="chipbtn" type="button" data-filter="price" aria-pressed="false">Price</button>
+    <button class="chipbtn" type="button" data-filter="people" aria-pressed="false">People</button>
+    <button class="chipbtn" type="button" data-filter="delivery" aria-pressed="false">Delivery</button>
+    <button class="chipbtn" type="button" data-filter="money" aria-pressed="false">Money</button>
+    <button class="chipbtn" type="button" data-filter="quality" aria-pressed="false">Quality</button>
+    <button class="chipbtn" type="button" data-filter="ethics" aria-pressed="false">Ethics</button>
+    <button class="chipbtn plain" type="button" id="toggle-all">Open all</button>
+  </div>
+  <div id="caselist">
+
+    <details class="case" data-tag="price">
+      <summary><span class="tag">Price</span><span class="case-title">A rival is ₹10 a bag cheaper and procurement wants a match</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>The buyer uses the rival's rate as the benchmark. If you agree to match it, you have accepted that you are the same as the rival, and you will be asked again next month.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Do not counter with a number. Ask for total volume and how long it will run.</li>
+          <li>Convert the gap into monthly rupees: ₹10 × 20 bags per tonne × 1,000 tonnes is ₹2,00,000 a month.</li>
+          <li>Compare that with what delays cost them. Use the break-even test.</li>
+          <li>Offer a rebate, credit terms or priority supply instead of a lower base rate.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>That gap is about ₹2 lakh a month on your volume. Let's see if one avoided stoppage covers it.</p>
+        <p class="watch"><span>Watch out</span>Never cut the rate in the first meeting. A price you drop is very hard to raise again.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="people">
+      <summary><span class="tag">People</span><span class="case-title">Procurement says no, but the site engineer likes you</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>The person who lives with the cement wants a better supplier. The person who signs the order only sees the rate.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Ask the engineer to request a trial on one non-critical pour.</li>
+          <li>Give the engineer real facts, such as batch reports and delivery times, to take to procurement.</li>
+          <li>Keep procurement in every email. Respect their role.</li>
+          <li>If the engineer's pain is real, bring in the project manager so the request carries weight.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>I'd like to support your team on one pour, so procurement has real data and not my promises.</p>
+        <p class="watch"><span>Watch out</span>Going over procurement's head in a rude way makes an enemy who can block you for years.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="delivery">
+      <summary><span class="tag">Delivery</span><span class="case-title">Your first trial load arrives late</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>The one thing you promised has failed on the one day everyone is watching. How you react decides whether you get a second chance.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Call before they call you.</li>
+          <li>Own it. Give the real cause and the fix in two sentences.</li>
+          <li>Offer a priority slot or a backup truck on the next order.</li>
+          <li>Send a short written note the same day.</li>
+          <li>Prevent it next time: confirm stock, truck, driver number and slot the evening before every trial load.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>We missed the slot. Here is why, and here is what changes from tomorrow.</p>
+        <p class="watch"><span>Watch out</span>Excuses. A failure handled well can build more trust than a smooth first order.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="money">
+      <summary><span class="tag">Money</span><span class="case-title">The customer asks for 90 days of credit</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>Credit is a price cut in disguise. It is easy to agree to, and costly in cash flow.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Know your company's credit limit before you walk in.</li>
+          <li>Work out the cost: 60 extra days on ₹10 lakh at 12 percent a year costs about ₹20,000.</li>
+          <li>Trade credit for a bigger volume commitment, an advance, or security such as a bank guarantee or post-dated cheques.</li>
+          <li>Get finance approval before you promise anything.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>I can stretch the terms if your volume commitment grows with it.</p>
+        <p class="watch"><span>Watch out</span>Long credit to a slow payer is the fastest way to lose money on a big account.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="quality">
+      <summary><span class="tag">Quality</span><span class="case-title">Cube tests come back low, or bags arrive with lumps</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>A quality complaint is your biggest risk and your biggest chance. Customers remember how you behaved far longer than they remember the fault.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Respond the same day and visit the site.</li>
+          <li>Collect the batch number, storage conditions, mix details and curing practice.</li>
+          <li>Bring your technical team and share the batch test certificate.</li>
+          <li>If the fault is yours, replace and say sorry once. If it is on site (storage, water ratio, curing), show it with data, politely.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>Let's check batch, storage and mix together. I'll bring our technical team tomorrow morning.</p>
+        <p class="watch"><span>Watch out</span>Blaming the customer without evidence, or hiding a batch problem. Either one ends the relationship.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="delivery">
+      <summary><span class="tag">Delivery</span><span class="case-title">Monsoon or festival season and cement is short</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>Supply is tight and every customer wants priority. A missed pour in peak season undoes months of work.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Ask key accounts for a pour plan two to four weeks ahead.</li>
+          <li>Reserve allocation early for accounts that gave you trials and commitments.</li>
+          <li>Tell customers early if supply will be tight. Bad news early is a gift.</li>
+          <li>Promise only what you can truck.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>Give me your next month's pour plan today and I'll lock the trucks.</p>
+        <p class="watch"><span>Watch out</span>Overpromising to win one more order, then failing three accounts at once.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="price">
+      <summary><span class="tag">Price</span><span class="case-title">A rival drops the price sharply at quarter end</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>Competitors push volume at month end or quarter end. Customers will hold up the sudden low rate to test you.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Do not panic and discount. Check the customer's real volume plan.</li>
+          <li>Remind them of your service record with a fact or two.</li>
+          <li>If needed, offer a short-period volume incentive with a clear target, and get your manager's approval first.</li>
+          <li>Report the market move to your own boss the same day.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>Their rate is good for this month. Let's talk about what keeps your site covered all year.</p>
+        <p class="watch"><span>Watch out</span>Chasing every price dip destroys your margin and teaches customers to wait for the next dip.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="people">
+      <summary><span class="tag">People</span><span class="case-title">The customer is tied to a rival by a contract</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>You cannot win the base volume today, but a contract rarely covers everything.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Ask when the contract ends and how renewal is decided.</li>
+          <li>Look for volume outside it: extra requirements, new phases, other sites.</li>
+          <li>Start the relationship three to four months before renewal.</li>
+          <li>Get on the approved vendor list for the next tender.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>When does the contract come up? I'd like to be in the room when you review it.</p>
+        <p class="watch"><span>Watch out</span>Never push a customer to break a contract. It is unethical and it will be used against you later.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="ethics">
+      <summary><span class="tag">Ethics</span><span class="case-title">You hear a rival pays the purchase manager on the side</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>It may be true, it may be gossip. Either way, you cannot win by matching it, and you must not.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Do not match it and do not accuse anyone.</li>
+          <li>Keep selling on value, service and proof, in writing.</li>
+          <li>Build relationships with the quality head and the owner or director, who care about long-term risk.</li>
+          <li>Tell your manager or compliance team if it affects the deal. Keep notes.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>We keep our dealings clean. Here is what we offer, in writing.</p>
+        <p class="watch"><span>Watch out</span>One kickback from your side can cost you the job and your company's name.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="people">
+      <summary><span class="tag">People</span><span class="case-title">Your dealers complain you sell direct in their area</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>Non-trade and trade overlap near big projects. Dealers feel you are taking their business.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Check your company's channel policy before anything else.</li>
+          <li>Be open with dealers about which accounts you handle directly and why.</li>
+          <li>Where policy allows, give the dealer the small local top-up business around the site.</li>
+          <li>Keep one clear rule for who covers which account.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>The big project volume is handled by my team. Your area keeps its regular counter and small-site business.</p>
+        <p class="watch"><span>Watch out</span>Losing dealer goodwill. They are your base business, and they talk to each other.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="money">
+      <summary><span class="tag">Money</span><span class="case-title">An account you won is paying late</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>Winning an order is half the job. Unpaid invoices turn a good account into a bad one.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Remind them before the due date, not after.</li>
+          <li>Reconcile invoices and fix any dispute fast.</li>
+          <li>Escalate to the accounts head, then the owner, in a polite order.</li>
+          <li>Agree a clear payment plan. Follow your company's rule on supply against overdue amounts.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>I want your site fully covered. I need the payment by the 15th to release next week's loads.</p>
+        <p class="watch"><span>Watch out</span>Leaving collections for later. Old dues only get harder to collect.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="price">
+      <summary><span class="tag">Price</span><span class="case-title">"Send me a rate. I'm comparing five suppliers."</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>A pure price shopper. A bare rate gives you no chance to show value.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Send the rate, but with conditions: volume, delivery slots, payment terms.</li>
+          <li>Ask for 20 minutes with the site team first, so the quote fits the real need.</li>
+          <li>Ask what else decides it besides price.</li>
+          <li>Follow up in two days. If it is only about price, offer a trial and move on without begging.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>A rate without your volume and schedule is a guess. Can I see the schedule first?</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="people">
+      <summary><span class="tag">People</span><span class="case-title">The trial went well, but they still give you only 20 percent</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>Buyers move slowly. A small share is a sensible safety margin for them, not a rejection.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Ask what stops them giving more.</li>
+          <li>Request a review meeting and bring numbers: on-time percentage, quality records, issues closed.</li>
+          <li>Propose a stepped increase, such as 20 to 30 to 40 percent over a quarter.</li>
+          <li>Ask about the next phase or new site. New work often goes to the supplier who performed.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>On the last twelve loads we were on time twelve times. What would it take to move to 40 percent?</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="people">
+      <summary><span class="tag">People</span><span class="case-title">You cannot even get a first meeting</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>Busy gatekeepers protect procurement's time. A generic "let's meet" email is easy to ignore.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Go through the site. Meet the engineer or foreman at the gate or during a pour.</li>
+          <li>Ask a mutual contact for a short introduction.</li>
+          <li>Bring something useful: a short note on local supply, price trend or monsoon planning.</li>
+          <li>Ask for 15 minutes only, and keep to it.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>Fifteen minutes. I'll bring one idea to reduce your delivery risk.</p>
+      </div>
+    </details>
+
+    <details class="case" data-tag="price">
+      <summary><span class="tag">Price</span><span class="case-title">Cement prices rise and the customer wants a fixed rate</span></summary>
+      <div class="case-body">
+        <section><h4>What is going on</h4><p>The buyer wants protection from market moves. You carry the risk if you agree to hold a low rate for too long.</p></section>
+        <section><h4>What to do</h4><ul class="tick">
+          <li>Offer a validity period, such as 15 days, on a confirmed quantity.</li>
+          <li>Or link price to the market with a cap, agreed in writing.</li>
+          <li>Get finance or your manager to approve any long fixed-rate offer.</li>
+          <li>Be open about why the market is moving, and show your math.</li>
+        </ul></section>
+        <p class="say"><span>Say it</span>I can hold this rate for 15 days on confirmed volume.</p>
+        <p class="watch"><span>Watch out</span>Locking a rate for months without approval. One price spike can wipe out the profit on the whole account.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="sec" id="replies">
+  <div class="sec-head">
+    <p class="kicker">Objection handling</p>
+    <h2>When they say this, you say that</h2>
+  </div>
+  <div class="reps">
+    <div class="rep"><p class="obj">&ldquo;Your rate is higher.&rdquo;</p><p class="ans">Yes, by about ₹X a bag. Let's see what one late load costs you. If delays cost more than the gap, the gap is cheap.</p></div>
+    <div class="rep"><p class="obj">&ldquo;We are happy with our supplier.&rdquo;</p><p class="ans">Good, keep them. I only want to be your second source, so one problem never stops your site.</p></div>
+    <div class="rep"><p class="obj">&ldquo;Match their price and we'll talk.&rdquo;</p><p class="ans">I can't match it without cutting service. I can offer a rebate or credit terms that bring your net cost closer.</p></div>
+    <div class="rep"><p class="obj">&ldquo;Just send a quotation.&rdquo;</p><p class="ans">Happy to. Can I spend 20 minutes with your site engineer first, so the quote fits your real needs?</p></div>
+    <div class="rep"><p class="obj">&ldquo;We have a contract with them.&rdquo;</p><p class="ans">When does it end? Meanwhile, can we cover volume outside the contract or a new phase?</p></div>
+    <div class="rep"><p class="obj">&ldquo;Why should we trust you?&rdquo;</p><p class="ans">You shouldn't yet. Try one pour. Here are references from sites like yours.</p></div>
+    <div class="rep"><p class="obj">&ldquo;A new supplier failed us before.&rdquo;</p><p class="ans">What went wrong? Let me show how we handle that, with a named dispatcher and batch reports for every load.</p></div>
+    <div class="rep"><p class="obj">&ldquo;Give me a discount for this big order.&rdquo;</p><p class="ans">I can give a quarterly rebate once the volume is crossed. What volume can you commit to?</p></div>
+  </div>
+</section>
+
+<section class="sec" id="rules">
+  <div class="sec-head">
+    <p class="kicker">Rules of the road</p>
+    <h2>Do this. Never do that.</h2>
+  </div>
+  <div class="duo">
+    <div class="rule do">
+      <h3>Do</h3>
+      <ul>
+        <li>Ask questions for the first ten minutes.</li>
+        <li>Convert every gap into rupees per month.</li>
+        <li>Meet the site team, not only procurement.</li>
+        <li>Prepare each trial like an exam.</li>
+        <li>Call first when something goes wrong.</li>
+        <li>Put every promise in writing.</li>
+        <li>Keep a record of loads, complaints and fixes.</li>
+        <li>Trade value for commitment.</li>
+      </ul>
+    </div>
+    <div class="rule dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Run down the rival's cement or people.</li>
+        <li>Cut the rate in the first meeting.</li>
+        <li>Promise a delivery you cannot truck.</li>
+        <li>Go around procurement rudely.</li>
+        <li>Give long credit without finance approval.</li>
+        <li>Blame the customer without evidence.</li>
+        <li>Chase every one-month price dip.</li>
+        <li>Offer or accept anything improper.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="trial">
+  <div class="sec-head">
+    <p class="kicker">Trial pour checklist</p>
+    <h2>Ready before the first truck leaves</h2>
+    <p class="lead">Tick items as you finish them. Your ticks are saved in this browser, so you can reuse the list for every trial.</p>
+  </div>
+  <div class="check">
+    <div class="check-top"><strong id="check-count">0 of 9 ready</strong><div class="prog"><i id="check-bar"></i></div><button class="btn ghost" type="button" id="check-reset">Clear</button></div>
+    <ul id="check-list">
+      <li><label><input type="checkbox" id="c1"><span>Pass marks agreed in writing: on-time loads, batch certificates, response time on any issue.</span></label></li>
+      <li><label><input type="checkbox" id="c2"><span>Stock reserved at the plant or depot for this order.</span></label></li>
+      <li><label><input type="checkbox" id="c3"><span>Truck, driver name and driver number confirmed the evening before.</span></label></li>
+      <li><label><input type="checkbox" id="c4"><span>Delivery slot agreed with the site engineer.</span></label></li>
+      <li><label><input type="checkbox" id="c5"><span>Backup truck identified in case of breakdown.</span></label></li>
+      <li><label><input type="checkbox" id="c6"><span>Batch test certificate ready to hand over on arrival.</span></label></li>
+      <li><label><input type="checkbox" id="c7"><span>Your own mobile number and the dispatcher's number given to the site team.</span></label></li>
+      <li><label><input type="checkbox" id="c8"><span>You, or someone senior from your side, on site for the first load.</span></label></li>
+      <li><label><input type="checkbox" id="c9"><span>One-page summary sent the next morning with facts, issues and fixes.</span></label></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="plan">
+  <div class="sec-head">
+    <p class="kicker">Thirty-day plan</p>
+    <h2>Turn the playbook into one account</h2>
+  </div>
+  <div class="weeks">
+    <div class="week"><span class="wk">W1</span><h3>Map</h3><ul class="tick">
+      <li>List your target accounts, who they buy from, volume and contract end dates.</li>
+      <li>Draw the decision map for the top three.</li>
+    </ul></div>
+    <div class="week"><span class="wk">W2</span><h3>Listen</h3><ul class="tick">
+      <li>Meet the site engineers and quality heads.</li>
+      <li>Use the question list. Write down their numbers.</li>
+    </ul></div>
+    <div class="week"><span class="wk">W3</span><h3>Propose</h3><ul class="tick">
+      <li>Run the break-even test with their figures.</li>
+      <li>Ask for a trial pour or a 20 to 30 percent second-source share.</li>
+    </ul></div>
+    <div class="week"><span class="wk">W4</span><h3>Prove</h3><ul class="tick">
+      <li>Deliver the trial, send the summary.</li>
+      <li>Ask for the next step in share, with numbers.</li>
+    </ul></div>
+  </div>
+  <div class="box hot">
+    <h4>Daily habits</h4>
+    <ul class="tick">
+      <li>Call or visit one site every morning before the office noise starts.</li>
+      <li>Check yesterday's deliveries for every account you serve.</li>
+      <li>Send each key account a one-line update every week.</li>
+      <li>Write down one thing a customer said that you did not expect.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="quiz">
+  <div class="sec-head">
+    <p class="kicker">Self-test</p>
+    <h2>Flashcards</h2>
+    <p class="lead">Read the question, say the answer out loud, then tap the card to check. Shuffle to mix the order.</p>
+  </div>
+  <div class="fc">
+    <button class="fc-card" type="button" id="fc-card" aria-live="polite">
+      <span class="fc-side" id="fc-side">Question</span>
+      <span class="fc-text" id="fc-text"></span>
+      <span class="fc-tap" id="fc-tap">Tap to see the answer</span>
+    </button>
+    <div class="fc-ctl">
+      <button class="btn ghost" type="button" id="fc-prev">Back</button>
+      <button class="btn" type="button" id="fc-next">Next</button>
+      <button class="btn ghost" type="button" id="fc-shuffle">Shuffle</button>
+      <span class="count tabnum" id="fc-count"></span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="pocket">
+  <div class="sec-head">
+    <p class="kicker">Pocket card</p>
+    <h2>Ten lines to read before every call</h2>
+  </div>
+  <div class="pocket">
+    <h3>Read it, then walk in</h3>
+    <ul>
+      <li>Sell the finished pour, not the bag.</li>
+      <li>Ask before you pitch.</li>
+      <li>Find the cost of one late load.</li>
+      <li>Meet the engineer, not only procurement.</li>
+      <li>Ask for one pour.</li>
+      <li>Ask to be the backup first.</li>
+      <li>Never cut the rate cold. Trade it for commitment.</li>
+      <li>Prepare the trial like an exam.</li>
+      <li>Own every failure fast.</li>
+      <li>Keep it clean and keep records.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap foot">
+  <div class="tape" aria-hidden="true"></div>
+  <p>General sales guidance for study. Example figures are illustrative. Always check pricing, credit and rebate limits with your company's policy before promising anything to a customer.</p>
+</footer>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var inr = function (n) { return "₹" + Math.round(n).toLocaleString("en-IN"); };
+  function num(id) { var v = parseFloat($(id).value); return isFinite(v) && v > 0 ? v : 0; }
+
+  /* Break-even calculator */
+  function calc() {
+    var vol = num("in-vol"), gap = num("in-gap"), cost = num("in-cost"), days = num("in-days");
+    var prem = vol * 20 * gap;
+    var save = days * cost;
+    var be = cost > 0 ? prem / cost : 0;
+    $("out-tonne").textContent = inr(gap * 20) + " / tonne";
+    $("out-be").textContent = be.toFixed(1) + " days";
+    $("out-prem").textContent = inr(prem);
+    $("out-save").textContent = inr(save);
+    var max = Math.max(prem, save, 1);
+    $("bar-prem").style.width = (prem / max * 100) + "%";
+    $("bar-save").style.width = (save / max * 100) + "%";
+    var v = $("verdict");
+    if (prem === 0) {
+      v.textContent = "You are priced the same. Enter your premium to see the test.";
+    } else if (save >= prem) {
+      v.textContent = "Avoided delays are worth " + inr(save) + " a month against an extra " + inr(prem) + " in price. You come out " + inr(save - prem) + " ahead, and that is the story to tell. Prove the delay numbers with the customer's own figures.";
+    } else {
+      v.textContent = "Avoided delays are worth " + inr(save) + " a month, which is " + inr(prem - save) + " short of the extra price. Find more hidden costs, shrink the gap with a rebate, or sell on quality and support as well.";
+    }
+  }
+  ["in-vol", "in-gap", "in-cost", "in-days"].forEach(function (id) { $(id).addEventListener("input", calc); });
+  calc();
+
+  /* Case filters */
+  var chips = document.querySelectorAll("#filters .chipbtn[data-filter]");
+  var cases = document.querySelectorAll("#caselist .case");
+  var toggleAll = $("toggle-all");
+  var allOpen = false;
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var f = chip.getAttribute("data-filter");
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+      cases.forEach(function (el) { el.hidden = !(f === "all" || el.getAttribute("data-tag") === f); });
+    });
+  });
+  toggleAll.addEventListener("click", function () {
+    allOpen = !allOpen;
+    cases.forEach(function (el) { if (!el.hidden) el.open = allOpen; });
+    toggleAll.textContent = allOpen ? "Close all" : "Open all";
+  });
+
+  /* Trial checklist, saved in this browser */
+  var KEY = "cement-trial-checklist";
+  var boxes = document.querySelectorAll("#check-list input");
+  function paint() {
+    var n = 0;
+    boxes.forEach(function (b) { if (b.checked) n++; });
+    $("check-count").textContent = n + " of " + boxes.length + " ready";
+    $("check-bar").style.width = (n / boxes.length * 100) + "%";
+  }
+  function save() {
+    try {
+      var on = [];
+      boxes.forEach(function (b) { if (b.checked) on.push(b.id); });
+      localStorage.setItem(KEY, JSON.stringify(on));
+    } catch (e) {}
+  }
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || "[]");
+    boxes.forEach(function (b) { b.checked = saved.indexOf(b.id) > -1; });
+  } catch (e) {}
+  boxes.forEach(function (b) { b.addEventListener("change", function () { paint(); save(); }); });
+  $("check-reset").addEventListener("click", function () {
+    boxes.forEach(function (b) { b.checked = false; });
+    paint(); save();
+  });
+  paint();
+
+  /* Flashcards */
+  var deck = [
+    ["What does CEMENT stand for?", "Cost of delay, Every decision maker, Mini trial pour, Even split, No blind discount, Technical backup and track record."],
+    ["What is the one core idea?", "Sell the cost of a finished pour, not the price of a bag."],
+    ["A customer says a rival is cheaper. What is your first move?", "Ask questions to find the hidden cost of their current supply. Do not argue about price."],
+    ["Why ask to be the second supplier?", "It lowers their risk, so it is an easy yes. You then grow your share by performing."],
+    ["What share do you ask for as second supplier?", "About 20 to 30 percent of their volume."],
+    ["Why not simply cut the price?", "It trains them to keep asking, lowers your margin for good and is hard to reverse."],
+    ["What do you trade instead of a discount?", "Quarterly volume rebate, better credit terms, priority supply and technical support, each in return for a commitment."],
+    ["Who cares about price, and who cares about delays?", "Procurement cares about price. Site engineer, project manager and quality head care about delays and quality."],
+    ["What makes a good trial pour?", "Small, with pass marks agreed in writing, prepared like an exam, and followed by a one-page summary."],
+    ["Your first load is late. First step?", "Call the customer before they call you, own it, and explain the fix."],
+    ["Formula for the monthly premium?", "Bags per month × price gap per bag. One tonne is 20 bags of 50 kg."],
+    ["Formula for break-even idle days?", "Monthly premium ÷ cost of one idle site day."],
+    ["Why are long credit days a hidden discount?", "Your money is stuck with the customer, and that cost of money comes out of your margin."],
+    ["What is share of wallet?", "Your percentage of the customer's total cement purchase."],
+    ["You hear a rival pays the purchase manager. What do you do?", "Stay clean, compete on value and proof, build wider relationships, and report it internally if it affects the deal."],
+    ["Three records that build your proof?", "On-time delivery record, batch test certificates, and time taken to close complaints."],
+    ["Customer is locked in a contract. What do you ask?", "When it ends, what volume it does not cover, and whether new phases or sites are open."],
+    ["Customer says, send a quotation. Reply?", "Send it with conditions and ask for 20 minutes with the site team first."],
+    ["Every give needs what?", "A get. Always ask for a commitment in return."],
+    ["What is switching cost?", "The effort and blame risk a buyer takes on when changing supplier. Trials and support reduce it."],
+    ["What is the peak-season rule?", "Ask for the pour plan early, reserve allocation for committed accounts, and never overpromise."],
+    ["Why meet more than the purchase head?", "The people who live with the cement can push for you when procurement only looks at price."]
+  ];
+  var order = deck.map(function (_, i) { return i; });
+  var pos = 0, showing = "q";
+  function render() {
+    var item = deck[order[pos]];
+    var card = $("fc-card");
+    var isQ = showing === "q";
+    card.classList.toggle("back", !isQ);
+    $("fc-side").textContent = isQ ? "Question" : "Answer";
+    var t = $("fc-text");
+    t.textContent = isQ ? item[0] : item[1];
+    t.classList.toggle("small", !isQ);
+    $("fc-tap").textContent = isQ ? "Tap to see the answer" : "Tap to see the question";
+    $("fc-count").textContent = "Card " + (pos + 1) + " of " + deck.length;
+  }
+  $("fc-card").addEventListener("click", function () { showing = showing === "q" ? "a" : "q"; render(); });
+  $("fc-next").addEventListener("click", function () { pos = (pos + 1) % deck.length; showing = "q"; render(); });
+  $("fc-prev").addEventListener("click", function () { pos = (pos - 1 + deck.length) % deck.length; showing = "q"; render(); });
+  $("fc-shuffle").addEventListener("click", function () {
+    for (var i = order.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = order[i]; order[i] = order[j]; order[j] = tmp;
+    }
+    pos = 0; showing = "q"; render();
+  });
+  render();
+})();
+</script>
+
+</body></html>
